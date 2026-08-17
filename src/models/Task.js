@@ -38,3 +38,11 @@ const Task = sequelize.define('Task', {
 });
 
 export default Task;
+
+
+//relaciones
+
+TaskModel.beLongsTo(userModel, { foreignKey: 'userId', as: "autor"});
+
+
+

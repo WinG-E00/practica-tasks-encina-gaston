@@ -36,9 +36,22 @@ const User = sequelize.define('User', {
             notEmpty: true,
             len: [1]
         }
+    },
+    person_id: {
+        type: DataType.Integer,
+        allowNull: false,
+        unique: true,
+        references: {
+            model: 'People'
+        }
     }
 }, {
     timestamps: true
 });
 
 export default User;
+
+
+
+// Relaciones...
+UserModel.belongsTo(PersonModel, {foreignKey: 'person_id', as: 'person_id'});
