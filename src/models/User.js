@@ -1,48 +1,38 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 
+
+
 const User = sequelize.define('User', {
-    // id (INTEGER, PRIMARY KEY, AUTO_INCREMENT)
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    // name (STRING(100), NOT NULL). No vacío y máx 100 caracteres.
     name: {
         type: DataTypes.STRING(100),
         allowNull: false,
         validate: {
             notEmpty: true,
-            len: [1]
+            len: [1, 100] // Rango correcto: mínimo 1, máximo 100
         }
     },
-    // email (STRING(100), UNIQUE, NOT NULL). No vacío y máx 100 caracteres.
     email: {
         type: DataTypes.STRING(100),
         allowNull: false,
         unique: true,
         validate: {
             notEmpty: true,
-            isEmail: true, // Aunque no se pide explícitamente, es buena práctica para un email
-            len: [1]
+            isEmail: true,
+            len: [1, 100] // Rango correcto
         }
     },
-    // password (STRING(100), NOT NULL). No vacío y máx 100 caracteres.
     password: {
-        type: DataTypes.STRING(100),
+        type: DataTypes.STRING(255), // Aumentado a 255 para soportar hashes sin problemas
         allowNull: false,
         validate: {
             notEmpty: true,
-            len: [1]
-        }
-    },
-    person_id: {
-        type: DataType.Integer,
-        allowNull: false,
-        unique: true,
-        references: {
-            model: 'People'
+            len: [6, 100] // Mínimo 6 caracteres para mayor seguridad
         }
     }
 }, {
@@ -53,5 +43,7 @@ export default User;
 
 
 
-// Relaciones...
-UserModel.belongsTo(PersonModel, {foreignKey: 'person_id', as: 'person_id'});
+
+
+// // Relaciones...
+// UserModel.belongsTo(PersonModel, {foreignKey: 'person_id', as: 'person_id'});

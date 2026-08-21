@@ -1,6 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js'; 
 
+
 const Task = sequelize.define('Task', {
 
     id: {
@@ -42,7 +43,7 @@ export default Task;
 
 //relaciones
 
-TaskModel.beLongsTo(userModel, { foreignKey: 'userId', as: "autor"});
+// TaskModel.beLongsTo(userModel, { foreignKey: 'userId', as: "autor"});
 
 
 
