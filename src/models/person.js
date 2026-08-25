@@ -14,12 +14,17 @@ export const Person = sequelize.define('Person', {
     },
     name: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: false,
+        validate: {
+            notEmpty: true,
+            len: [1, 100] // Rango correcto: mínimo 1, máximo 100
+        }
     },
     
 },{
-    timestamps: true
+    timestamps: true,
 }
 
-)
+);
 
+export default Person

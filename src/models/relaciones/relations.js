@@ -1,9 +1,9 @@
-import { sequelize } from '../config/database.js';
+import  sequelize  from '../../config/database.js';
 import  User  from '../User.js';
 import Task from '../Task.js';
-import { Person } from '../person.js'
-import { Categories } from '../categories.js'
-import { Tasks_Categories } from '../tasksCategories.js'
+import Person  from '../person.js'
+import Categories  from '../categories.js'
+import Tasks_Categories from '../tasksCategories.js'
 
 
 
@@ -16,7 +16,7 @@ import { Tasks_Categories } from '../tasksCategories.js'
 
 
 Task.belongsTo(User, {
-  foreignKey: 'personId',     
+  foreignKey: 'usuarioId',     
   as: 'user',                 
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE'
@@ -25,16 +25,16 @@ Task.belongsTo(User, {
 
 
 User.belongsTo(Person, {
-  foreignKey: 'personId',
-  as: 'personId',
+  foreignKey: 'userId',
+  as: 'person',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE'
 });
 
 
 Person.hasOne(User, {
-  foreignKey: 'usuarioId',
-  as: 'person',
+  foreignKey: 'userId',
+  as: 'user',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE'
 });
@@ -46,29 +46,19 @@ Person.hasOne(User, {
 
 //relacion de muchos a muchos
 
+Task.belongsToMany(Categories,{
+    through: Tasks_Categories,
+    foreignKey: 'taskId',
+    otherKey: 'categoryId'
 
-Tasks_Categories.belongsToMany(Categories, {
-  foreignKey: 'categorieId',
-  as: 'category'
-})
+});
 
-Tasks_Categories.belongsToMany(Task, {
-  foreignKey: 'taskId',
-  as: 'task'
-})
+Categories.belongsToMany(Task, {
+  through: Tasks_Categories,
+  foreignKey: 'categoryId',
+  otherKey: 'taskId'
+});
 
-
-Task.hasMany(Tasks_Categories, {
-  foreignKey: 'taskId',
-  as: 'tasks_categories',
-  onDelete: 'CASCADE'
-
-})
-
-Categories.hasMany(Tasks_Categories, {
-  foreignKey: 'categorieId',
-  as: 'tasks_categories'
-})
 
 
 

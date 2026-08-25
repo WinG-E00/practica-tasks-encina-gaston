@@ -9,14 +9,6 @@ const User = sequelize.define('User', {
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-        validate: {
-            notEmpty: true,
-            len: [1, 100] // Rango correcto: mínimo 1, máximo 100
-        }
-    },
     email: {
         type: DataTypes.STRING(100),
         allowNull: false,

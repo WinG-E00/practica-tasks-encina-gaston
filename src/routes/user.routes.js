@@ -9,22 +9,22 @@ import {
 
 const router = express.Router();
 
-router.post('/', createUser);
+router.post('/api/users', createUser);
 // Para crear user tiene que haber person supongo
 
-router.get('/', getAllUsers);
+router.get('/api/users', getAllUsers);
 // supongo que al momento de hacer el get te traiga tambien el person
 
-router.get('/:id', getUserById);
+router.get('/api/users/:id', getUserById);
 //te trae el usuario por id
 
 
-router.put('/:id', updateUser);
+router.put('/api/users/:id', updateUser);
 
 
 
-router.delete('/:id', deleteUser);
+router.delete('/api/users/:id', deleteUser);
 // cuando hagas delete a el user este tambien borrara la person y sus tasks
-z
+
 
 export default router;

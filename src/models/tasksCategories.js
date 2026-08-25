@@ -13,3 +13,5 @@ export const Tasks_Categories = sequelize.define('Tasks_Categories', {
 
 })
 
+
+export default Tasks_Categories;

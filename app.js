@@ -5,35 +5,33 @@ import sequelize from "./src/config/database.js";
 import userRouter from './src/routes/user.routes.js';
 import taskRouter from './src/routes/tasks.router.js';
 
+import { initModels } from './src/config/sync.js'
+
 const app = express();
 const PORT = process.env.APP_PORT || 3000;
 
 // configuracion de app
 app.use(express.json());
 
+// Configuracion de routers
+
+app.use(userRouter);
+app.use(taskRouter);
+
+
+
 app.get('/test', (req, res) => {
   res.send('OK');
 });
-
-// Routers
-app.use('/api/users', userRouter);
-app.use('/api/tasks', taskRouter);
-
-
-
-
-
 
 
 
 async function startServer(){
 
     try {
-        await sequelize.authenticate();
-        console.log('Conexion exitosa');
+       
 
-        await sequelize.sync({ force: false });
-        console.log('Sincronizacion con la base de datos');
+        await initModels()
 
         app.listen(PORT, () => {
             console.log(`El servidor se ha iniciado en el puerto ${PORT}`);

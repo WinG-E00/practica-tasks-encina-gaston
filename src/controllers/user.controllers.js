@@ -1,4 +1,6 @@
 import User from '../models/User.js';
+import Task from '../models/Task.js'
+import Person from '../models/person.js'
 
 // POST /api/users - Crear un nuevo usuario [4]
 export const createUser = async (req, res) => {
@@ -16,32 +18,45 @@ export const createUser = async (req, res) => {
         if (existingUser) return res.status(400).json({ message: "El email ya está registrado" });
 
         const newUser = await User.create({ name, email, password });
-        res.status(201).json({ message: "Usuario creado con éxito", data: newUser }); // [2]
+        res.status(201).json({ message: "Usuario creado con éxito", data: newUser }); 
+
+        
     } catch (error) {
         res.status(500).json({ message: "Error al crear el usuario", error: error.message }); // [1, 2]
     }
 };
 
-// GET /api/users - Obtener todos los usuarios [4]
+// GET /api/users - Obtener todos los usuarios
+// Relacion de person mostrada en el controlador par traer todos los usuarios
+// Mostrar todas las tareas vinculadas a este
 export const getAllUsers = async (req, res) => {
     try {
-        const users = await User.findAll();
+        const users = await User.findAll({
+            include: ['person','tareasAsignadas']
+        });
         res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ message: "Error al obtener usuarios", error: error.message });
     }
 };
 
-// GET /api/users/:id - Obtener un usuario por ID [4]
+
+
+// GET /api/users/:id - Obtener un usuario por ID
+// con sus tareas tambien....
 export const getUserById = async (req, res) => {
     try {
-        const user = await User.findByPk(req.params.id);
+        const user = await User.findByPk(req.params.id, {
+            include: ['person', 'tareasAsignadas']
+        });
         if (!user) return res.status(404).json({ message: "Usuario no encontrado" }); // [2]
         res.status(200).json(user);
     } catch (error) {
         res.status(500).json({ message: "Error al obtener el usuario", error: error.message });
     }
 };
+
+
 
 // PUT /api/users/:id - Actualizar usuario [4]
 export const updateUser = async (req, res) => {

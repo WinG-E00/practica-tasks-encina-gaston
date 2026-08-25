@@ -39,3 +39,6 @@ export const Categories = sequelize.define('Categories',{
 },{
     timestamps: true
 })
+
+
+export default Categories;
