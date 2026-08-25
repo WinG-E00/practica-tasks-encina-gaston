@@ -11,28 +11,8 @@ export const Categories = sequelize.define('Categories',{
         autoIncrement: true
     },
 
-    education: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-
-
-
-    },
-
-    home: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-
-    },
-
-    work: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
-    },
-
-    other: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
+    categoryType: {
+        type: DataTypes.STRING,
     }
 
 
