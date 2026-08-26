@@ -7,13 +7,32 @@ export const validatorPerson = [
 
     body('name')
         .notEmpy()
-        .withMessage('')
+        .withMessage('El name no puede estar vacio')
         .exist()
-        .withMessage('')
+        .withMessage('El name tiene que existir')
         .isString()
-        .withMessage('')
+        .withMessage('el name tiene que ser un string')
         .isLength({max: 350})
-        .withMessage('')
+        .withMessage('El name no puede tener mas de 350 caracteres'),
+
+
+        (req,res, next ) => {
+
+            const errors = validationResult(req);
+
+            if(!errors.isEmpty()){
+                return res.status(400).json({
+                    succes:false,
+                    errors: errors.array()
+                })
+
+            };
+
+            next();
+
+        }
+
+
 
 
 ];

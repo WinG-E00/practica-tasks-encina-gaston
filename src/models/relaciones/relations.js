@@ -50,8 +50,8 @@ Task.belongsToMany(Categories,{
     through: Tasks_Categories,
     foreignKey: 'taskId',
     otherKey: 'categoryId'
-
 });
+
 
 Categories.belongsToMany(Task, {
   through: Tasks_Categories,

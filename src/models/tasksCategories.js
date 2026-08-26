@@ -11,7 +11,10 @@ export const Tasks_Categories = sequelize.define('Tasks_Categories', {
         primaryKey: true
     }
 
-})
+});
+
+
+
 
 
 export default Tasks_Categories;

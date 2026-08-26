@@ -7,20 +7,9 @@ export const createTask = async (req, res) => {
     try {
         const { title, description, isComplete, usuarioId } = req.body;
 
-        // Validaciones de datos
-        if (!title || !description) return res.status(400).json({ message: "Título, descripción son obligatorios" });
-
-        if (title.length > 100 || description.length > 100) {
-            return res.status(400).json({ message: "Máximo 100 caracteres permitidos" });
-        }
-
-        //validacion de existencia de usuario
-        if(!usuarioId) return res.status(400).json({ message: "La tarea debe estar vinculada a un usuario"});
-        
-
+       
 
         // Verificación de unicidad del título
-
         const existingTask = await Task.findOne({ where: { title } });
         if (existingTask) return res.status(400).json({ message: "Ya existe una tarea con ese título" });
 
@@ -89,7 +78,7 @@ export const getTaskById = async (req, res) => {
 export const updateTask = async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, description, isComplete } = req.body;
+        const { title, description, isComplete, } = req.body;
 
         // Verificación de existencia previa
         const task = await Task.findByPk(id);

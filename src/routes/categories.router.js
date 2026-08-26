@@ -11,7 +11,7 @@ router.post('/api/post/create_task_category', createTaskCategories );
 
 
 //Aca tengo que crear el controlador para poder crear la categorie
-router.post('/api/create/categorie', createCategorie);
+router.post('/api/create/categorie', validatorCrearCategoria,createCategorie);
 
 
 
