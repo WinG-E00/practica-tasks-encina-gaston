@@ -1,6 +1,6 @@
 import { body, validationResult } from 'express-validator';
 
-
+const controladoruno = [Error, funcion]
 
 //Validador para verifcar que la categoria sea un string y no tenga mas de 100 caracteres
 export const validatorCrearCategoria = [

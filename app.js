@@ -5,6 +5,10 @@ import sequelize from "./src/config/database.js";
 import userRouter from './src/routes/user.routes.js';
 import taskRouter from './src/routes/tasks.router.js';
 
+//Necesito importar los nuevos routers con los controladores y validadores
+
+
+
 import { initModels } from './src/config/sync.js'
 
 const app = express();
@@ -36,6 +40,10 @@ async function startServer(){
         app.listen(PORT, () => {
             console.log(`El servidor se ha iniciado en el puerto ${PORT}`);
         });
+
+        
+
+
 
 
 

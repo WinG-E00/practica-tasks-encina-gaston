@@ -21,7 +21,7 @@ export async function initModels(){
         await sequelize.authenticate();
         console.log('DB connected')
 
-        await sequelize.sync({ force: true}); // o { force: true } en pruebas
+        await sequelize.sync({ force: true }); // o { force: true } en pruebas
         console.log('Modelos sincronizados');
         
     } catch(err){
