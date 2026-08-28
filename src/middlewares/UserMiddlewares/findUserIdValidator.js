@@ -1,4 +1,4 @@
-import { param, body, validationResult } from 'express-validator';
+import { param, validationResult } from 'express-validator';
 
 
 const validadorBuscarUsuarioPorId = [

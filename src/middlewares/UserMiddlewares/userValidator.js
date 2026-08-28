@@ -6,7 +6,7 @@ import Person from '../../models/person.js';
 export const userValidator = [
 
   body('usuarioId')
-    .notEmpty()
+    .notEmpy()
     .withMessage('El usuario id no puede estar vacio')
     .isInt()
     .withMessage('El id tiene que ser un numero')
@@ -20,13 +20,13 @@ export const userValidator = [
     } )
   ,
     body('email')
-        .notEmpty()
+        .notEmpy()
         .withMessage('el campo email no puede estar vacio')
         .isEmail()
         .withMessage('Debe tener un formato de email valido'),
 
     body('password')
-        .notEmpty()
+        .notEmpy()
         .withMessage('La contraseña es obligatoria')
         .isLength({ min: 8, max: 64 })
         .withMessage('La contraseña debe tener entre 8 y 64 caracteres')
