@@ -9,12 +9,17 @@ export const Tasks_Categories = sequelize.define('Tasks_Categories', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
-    }
-
-});
-
-
-
+  },
+  {
+    timestamps: true,
+    paranoid: true
+  });
 
 
 export default Tasks_Categories;
+
+
+User
+Task
+Person
+Categories

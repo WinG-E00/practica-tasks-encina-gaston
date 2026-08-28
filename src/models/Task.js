@@ -35,7 +35,10 @@ const Task = sequelize.define('Task', {
         validate: {
             isBoolean: true
         }
-    }
+  },{
+  timestamps: true,
+  paranoid: true
+}
 });
 
 export default Task;

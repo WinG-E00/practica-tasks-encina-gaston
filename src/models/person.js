@@ -20,9 +20,10 @@ export const Person = sequelize.define('Person', {
             len: [1, 100] // Rango correcto: mínimo 1, máximo 100
         }
     },
-    
+
 },{
-    timestamps: true,
+  timestamps: true,
+  paranoid: true
 }
 
 );

@@ -19,5 +19,12 @@ router.get('/api/person', ObtenerRegistrosYRelaciones )
 router.post('/api/person',ValidatorPerson ,/*Me falta crear el controller para crear un registro de person*/)
 
 
+//Ruta put
+//router.put('/api/person/:id')
+
+
+
+//router.delete('/api/person/:id')
+
 
 

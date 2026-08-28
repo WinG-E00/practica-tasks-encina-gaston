@@ -28,7 +28,8 @@ const User = sequelize.define('User', {
         }
     }
 }, {
-  timestamps: true
+  timestamps: true,
+  paranoid: true,
 });
 
 export default User;

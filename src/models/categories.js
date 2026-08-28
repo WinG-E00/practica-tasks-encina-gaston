@@ -17,7 +17,8 @@ export const Categories = sequelize.define('Categories',{
 
 
 },{
-    timestamps: true
+  timestamps: true,
+  paranoid: true
 })
 
 
