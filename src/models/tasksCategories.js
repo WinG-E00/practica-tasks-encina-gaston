@@ -3,18 +3,34 @@ import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 
 
-export const Tasks_Categories = sequelize.define('Tasks_Categories', {
-
-    id:{
+const User = sequelize.define('User', {
+    id: {
         type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-  },
-  {
+        primaryKey: true,
+        autoIncrement: true
+    },
+    email: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+        unique: true,
+        validate: {
+            notEmpty: true,
+            isEmail: true,
+            len: [1, 100]
+        }
+    },
+    password: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+        validate: {
+            notEmpty: true,
+            len: [6, 100]
+        }
+    }
+}, {
     timestamps: true,
     paranoid: true
-  });
-
+});
 
 export default Tasks_Categories;
 

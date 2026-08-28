@@ -25,7 +25,7 @@ router.get('/api/users/:id', validadorBuscarUsuarioPorId, getUserById);
 //te trae el usuario por id
 
 
-//
+//Actualizar user...
 router.put('/api/users/:id', validatorUpdateUser , updateUser);
 
 

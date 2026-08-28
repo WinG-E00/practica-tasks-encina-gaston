@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/database.js'; 
+import sequelize from '../config/database.js';
 
 
 const Task = sequelize.define('Task', {
@@ -35,10 +35,11 @@ const Task = sequelize.define('Task', {
         validate: {
             isBoolean: true
         }
-  },{
-  timestamps: true,
-  paranoid: true
-}
+    }
+}, { // <-- Aquí solo hacía falta separar los dos objetos con coma y llave
+    timestamps: true,
+    paranoid: true,
+    deletedAt: 'fecha_eliminacion'
 });
 
 export default Task;
@@ -47,6 +48,3 @@ export default Task;
 //relaciones
 
 // TaskModel.beLongsTo(userModel, { foreignKey: 'userId', as: "autor"});
-
-
-

@@ -7,12 +7,16 @@ import {
   deleteTask,
 } from '../controllers/tasks.controllers.js';
 
+import { taskDeleteValidator } from '../middlewares/TaskMiddlewares/taskDeleteValidator.js';
+
+
+
 //Importacion de validador de create task
 import { createdTaskValidator } from '../middlewares/TaskMiddlewares/taskValidator.js';
 const router = express.Router();
 
 // post para crear tarea con validador y controlador
-router.post('/api/tasks', createdTaskValidator,createTask);
+router.post('/api/tasks', createdTaskValidator, createTask);
 
 
 router.get('/api/tasks', getAllTasks);
@@ -27,7 +31,7 @@ router.put('/api/tasks/:id', updateTask);
 // suponogo que aca si se puede solo editar la tarea
 
 
-router.delete('/api/tasks/:id', deleteTask);
+router.delete('/api/tasks/:id', taskDeleteValidator ,deleteTask);
 // y bueno aca si haces delete no hace falta que se borre el usuario ni la Person
 
 

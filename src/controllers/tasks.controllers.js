@@ -100,10 +100,9 @@ export const updateTask = async (req, res) => {
 // DELETE /api/tasks/:id - Eliminar tarea
 export const deleteTask = async (req, res) => {
     try {
-        const task = await Task.findByPk(req.params.id);
-        if (!task) return res.status(404).json({ message: "Tarea no encontrada para eliminar" }); // [2]
-
-        await task.destroy();
+        
+        //Lo de destroy ya echo...
+        await Task.destroy();
         res.status(200).json({ message: "Tarea eliminada con éxito" });
     } catch (error) {
         res.status(500).json({ message: "Error al eliminar la tarea", error: error.message });
