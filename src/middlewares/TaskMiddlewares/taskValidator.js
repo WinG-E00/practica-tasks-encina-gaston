@@ -1,4 +1,4 @@
-import { body, validationResult } from 'express-validator';
+import { body, validationResult, matchedData } from 'express-validator';
 
 
 
@@ -39,6 +39,7 @@ export const createdTaskValidator = [
                     errors: errors.array()
                 });
             }
+            req.matchedData = matchedData(req);
             next();
     }
 
